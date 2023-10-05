@@ -26,3 +26,7 @@ src-link luci /home/liudf/luci
 5. 通过 `make menuconfig` 添加 Apfree-Wifidog
 
 6. 运行 `make -j4` 编译固件
+
+# 配置页面
+
+![image](https://github.com/liudf0716/luci-app-apfree-wifidog/assets/1182593/36d2c5a3-ba53-40d2-b2ee-3ad61314a849)
