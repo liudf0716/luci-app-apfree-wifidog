@@ -1,0 +1,60 @@
+#: apfree-wifidog package 
+msgid "apfree-wifidog"
+msgstr "门户认证"
+
+msgid "ApFree-WiFiDog"
+msgstr "门户认证"
+
+msgid "apfree-wifidog offers a stable and secure captive portal solution."
+msgstr "apfree-wifidog 提供了一个稳定安全的门户认证解决方案"
+
+msgid "Enable apfree-wifidog service."
+msgstr "启用apfree-wifidog门户认证服务"
+
+msgid "Gateway ID"
+msgstr "网关 ID"
+
+msgid "The ID of the gateway."
+msgstr "网关的ID（一般为设备的MAC地址）"
+
+msgid "Channel Path"
+msgstr "用户渠道"
+
+msgid "The channel path of the gateway."
+msgstr "网关的用户渠道"
+
+msgid "Auth Server Hostname"
+msgstr "认证服务器主机名"
+
+msgid "The domain or IP address of the authentication server."
+msgstr "认证服务器的域名或 IP 地址"
+
+msgid "Auth Server Port"
+msgstr "认证服务器端口"
+
+msgid "The port of the authentication server."
+msgstr "认证服务器的端口"
+
+msgid "Auth Server URI path"
+msgstr "认证服务器 URI 路径"
+
+msgid "The URI path of the authentication server."
+msgstr "认证服务器的 URI 路径"
+
+msgid "Trusted Domains"
+msgstr "域名白名单"
+
+msgid "The trusted domains of the gateway, for example: \"www.baidu.com,www.qq.com,...\"."
+msgstr "域名白名单（多域名用逗号分隔），例如：\"www.baidu.com,www.qq.com,...\""
+
+msgid "Trusted MACs"
+msgstr "MAC 地址白名单"
+
+msgid "The trusted MAC addresses of the gateway, for example: \"00:11:22:33:44:55,66:77:88:99:00:11,...\"."
+msgstr "MAC 地址白名单（多 MAC 地址用逗号分隔），例如：\"00:11:22:33:44:55,66:77:88:99:00:11,...\""
+
+msgid "running..."
+msgstr "运行中"
+
+msgid "not running..."
+msgstr "未运行"
