@@ -4,6 +4,7 @@
 'require form';
 'require rpc';
 'require tools.widgets as widgets';
+'require tools.github as github';
 
 var callServiceList = rpc.declare({
 	object: 'service',
@@ -40,9 +41,9 @@ return view.extend({
 		var m, s, o;
 
 		m = new form.Map('wifidogx', _('ApFree-WiFiDog'));
-		m.description = _("apfree-wifidog offers a stable and secure captive portal solution.");
+		m.description = github.desc('apfree-wifidog offers a stable and secure captive portal solution.', 'liudf0716', 'apfree-wifidog');
 
-		// add kcptun-client status section and option 
+		// add apfree-wifidog status section and option 
 		s = m.section(form.NamedSection, '_status');
 		s.anonymous = true;
 		s.render = function (section_id) {
@@ -63,43 +64,43 @@ return view.extend({
 
 		s = m.section(form.TypedSection, "wifidogx", _("General Setup"));
 		s.anonymous = true;
-		// add client settings
-		// disabled
-		o = s.option(form.Flag, 'enabled', _('Enable'), _('Enable apfree-wifidog service.'));
+
+		s.tab('basic', _('Basic Settings'));
+		s.tab('advanced', _('Advanced Settings'));
+
+		o = s.taboption('basic', form.Flag, 'enabled', _('Enable'), _('Enable apfree-wifidog service.'));
 		o.rmempty = false;
-		// gateway_id
-		o = s.option(form.Value, 'gateway_id', _('Gateway ID'), _('The ID of the gateway.'));
+
+		o = s.taboption('basic', form.Value, 'gateway_id', _('Gateway ID'), _('The ID of the gateway.'));
 		o.rmempty = false;
+
+		o = s.taboption('basic', form.Value, 'channel_path', _('Channel Path'), _('The channel path of the gateway.'));
 		o.datatype = 'string';
-		// channel_path
-		o = s.option(form.Value, 'channel_path', _('Channel Path'),
-			 _('The channel path of the gateway.'));
-		o.datatype = 'string';
-		// auth_server_hostname
-		o = s.option(form.Value, 'auth_server_hostname', _('Auth Server Hostname'), 
-			_('The domain or IP address of the authentication server.'));
+
+		o = s.taboption('basic', form.Value, 'auth_server_hostname', _('Auth Server Hostname'), 
+						_('The domain or IP address of the authentication server.'));
 		o.rmempty = false;
 		o.datatype = 'host';
-		// auth_server_port
-		o = s.option(form.Value, 'auth_server_port', _('Auth Server Port'), 
-			_('The port of the authentication server.'));
+
+		o = s.taboption('basic', form.Value, 'auth_server_port', _('Auth Server Port'),
+						_('The port of the authentication server.'));
 		o.rmempty = false;
 		o.datatype = 'port';
-		// auth_server_path
-		o = s.option(form.Value, 'auth_server_path', _('Auth Server URI path'), 
-			_('The URI path of the authentication server.'));
+
+		o = s.taboption('basic', form.Value, 'auth_server_path', _('Auth Server URI path'),
+						_('The URI path of the authentication server.'));
 		o.rmempty = false;
 		o.datatype = 'string';
-		// trusted domains
-		o = s.option(form.Value, 'trusted_domains', _('Trusted Domains'), 
-			_('The trusted domains of the gateway, for example: "www.baidu.com,www.qq.com,...".'));
+
+		o = s.taboption('advanced', form.DynamicList, 'trusted_domains', _('Trusted Domains'),
+						_('The trusted domains of the gateway'));
 		o.rmempty = true;
-		o.datatype = 'string';
-		// trusted macs
-		o = s.option(form.Value, 'trusted_macs', _('Trusted MACs'), 
-			_('The trusted MAC addresses of the gateway, for example: "00:11:22:33:44:55,00:11:22:33:44:56,...".'));
+		o.datatype = 'hostname';
+
+		o = s.taboption('advanced', form.DynamicList, 'trusted_macs', _('Trusted MACs'),
+						_('The trusted MAC addresses of the gateway'));
 		o.rmempty = true;
-		o.datatype = 'string';
+		o.datatype = 'list(macaddr)';
 		
 		return m.render();
 	}
