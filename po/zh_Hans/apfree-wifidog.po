@@ -58,3 +58,9 @@ msgstr "运行中"
 
 msgid "not running..."
 msgstr "未运行"
+
+msgid "The trusted domains of the gateway"
+msgstr "网关的域名白名单"
+
+msgid "The trusted MAC addresses of the gateway"
+msgstr "网关的 MAC 地址白名单"
