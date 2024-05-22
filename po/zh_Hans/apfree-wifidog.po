@@ -64,3 +64,15 @@ msgstr "网关的域名白名单"
 
 msgid "The trusted MAC addresses of the gateway"
 msgstr "网关的 MAC 地址白名单"
+
+msgid "Value"
+msgstr "值"
+
+msgid "Internet Connectivity"
+msgstr "互联网连接"
+
+msgid "Auth server reachable"
+msgstr "认证服务器可达"
+
+msgid "Authentication servers"
+msgstr "认证服务器"
