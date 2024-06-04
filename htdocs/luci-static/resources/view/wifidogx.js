@@ -112,11 +112,11 @@ return view.extend({
 		// add poll to update the status
 		pollData:L.Poll.add(function() {
 			return L.resolveDefault(getServiceStatus()).then(function(isRunning) {
+				var table = document.getElementById('wifidogx-status');
 				if (isRunning) {
 					return fs.exec('/etc/init.d/wifidogx', ['status']).then(function (res) {
 						if (res.code === 0) {
 							var lines = res.stdout.split('\n');
-							var view = document.getElementById('wifidogx-status');
 							var status = {};
 							lines.forEach(function(line) {
 								if (line.startsWith('Version:')) {
@@ -137,34 +137,19 @@ return view.extend({
 									});
 								}
 							});
-							// clear the table view except the title
-							while (view.childNodes.length > 1) {
-								view.removeChild(view.lastChild);
-							}
 							
-							// add status to the table view
-							view.appendChild(E('tr', { 'class': 'tr' }, [
-								E('td', { 'class': 'td' }, _('Version')),
-								E('td', { 'class': 'td' }, status.version)
-							]));
-							view.appendChild(E('tr', { 'class': 'tr' }, [
-								E('td', { 'class': 'td' }, _('Uptime')),
-								E('td', { 'class': 'td' }, status.uptime)
-							]));
-							view.appendChild(E('tr', { 'class': 'tr' }, [
-								E('td', { 'class': 'td' }, _('Internet Connectivity')),
-								E('td', { 'class': 'td' }, status.internetConnectivity ? 'Yes' : 'No')
-							]));
-							view.appendChild(E('tr', { 'class': 'tr' }, [
-								E('td', { 'class': 'td' }, _('Auth server reachable')),
-								E('td', { 'class': 'td' }, status.authServerReachable ? 'Yes' : 'No')
-							]));
-							view.appendChild(E('tr', { 'class': 'tr' }, [
-								E('td', { 'class': 'td' }, _('Authentication servers')),
-								E('td', { 'class': 'td' }, status.authServers.join('<br>'))
-							]));
+							var trows = [];
+							trows.push([_('Version'), status.version]);
+							trows.push([_('Uptime'), status.uptime]);
+							trows.push([_('Internet Connectivity'), status.internetConnectivity ? 'Yes' : 'No']);
+							trows.push([_('Auth server reachable'), status.authServerReachable ? 'Yes' : 'No']);
+							trows.push([_('Authentication servers'), status.authServers.join('<br>')]);
+
+							cbi_update_table(table, trows, E('em', _('No information available')));
 						}	
 					});
+				} else {
+					cbi_update_table(table, [], E('em', _('No information available')));
 				}
 			});
 		}, 2);
@@ -179,8 +164,12 @@ return view.extend({
 					E('th', { 'class': 'th' }, _('Value')),
 				])
 			]);
+
+			cbi_update_table(table, [], E('em', { 'class': 'spinning' }, _('Collecting data...')))
+
 			// get wifidogx version
-			return table;
+			return E('div', {'class': 'cbi-section cbi-tblsection'}, [
+				E('h3', _('Status')), table]);
 		};
 		this.pollData;
 		
