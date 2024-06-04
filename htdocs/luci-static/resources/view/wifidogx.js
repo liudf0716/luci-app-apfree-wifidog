@@ -85,6 +85,19 @@ return view.extend({
 		o.datatype = 'string';
 		o.optional = false;
 
+		o = s.taboption('basic', form.ListValue, 'log_level', _('Log Level'),
+						_('The log level of the apfree-wifidog.'));
+		o.value(7, _('Debug'));
+		o.value(6, _('Info'));
+		o.value(5, _('Notice'));
+		o.value(4, _('Warning'));
+		o.value(3, _('Error'));
+		o.value(2, _('Critical'));
+		o.value(1, _('Alert'));
+		o.value(0, _('Emergency'));
+		o.defaulValue = 0;
+		o.optional = false;
+
 		o = s.taboption('advanced', form.DynamicList, 'trusted_domains', _('Trusted Domains'),
 						_('The trusted domains of the gateway'));
 		o.rmempty = true;
