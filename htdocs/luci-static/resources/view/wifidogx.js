@@ -52,6 +52,7 @@ return view.extend({
 		s.anonymous = true;
 		s.tab('basic', _('Basic Settings'));
 		s.tab('advanced', _('Advanced Settings'));
+		s.tab('group', _('Group Settings')); 
 		s.tab('status', _('Status'));
 
 		o = s.taboption('basic', form.Flag, 'enabled', _('Enable'), _('Enable apfree-wifidog service.'));
@@ -112,7 +113,19 @@ return view.extend({
 		o.datatype = 'macaddr';
 		o.placeholder = 'A0:B1:C2:D3:44:55';
 		
+		o = s.taboption('advanced', widgets.WifidogxGroupSelect, 'app_white_list', _('App White List'),
+						_('The app white list of the gateway.'));
+		o.rmempty = true;
+		o.multiple = true;
+		o.nocreate = true;
 		
+		o = s.taboption('advanced', widgets.WifidogxGroupSelect, 'mac_white_list', _('MAC White List'),
+						_('The MAC white list of the gateway.'));
+		o.rmempty = true;
+		o.multiple = true;
+		o.nocreate = true;
+		o.setGroupType('mac');
+
 		o = s.taboption('status', form.DummyValue, '_status');
 		o.rawhtml = true;
 		o.cfgvalue = function() {
@@ -186,6 +199,55 @@ return view.extend({
 		};
 		this.pollData;
 		
+		s = m.section(form.GridSection, 'group',  _('Group Define'));
+		s.addremove = true;
+		s.anonymous = false;
+		s.nodescriptions = true;
+
+		s.handleRemove = function(section_id, ev) {
+			// according section_id to check whether it is used by app_white_list or mac_white_list
+			var group = uci.get('wifidogx', section_id, 'g_type') === '1' ? 'app_white_list' : 'mac_white_list';
+			var groupList = uci.get('wifidogx', 'common', group);
+			if (groupList) {
+				for (var i = 0; i < groupList.length; i++) {
+					if (groupList[i] === section_id) {
+						ui.addNotification(null, E('p', [
+							_('The group is used by '), E('strong', group), _(' please remove it from '), E('strong', group), _(' first.')
+						]), 'warning');
+						return false;
+					}
+				}
+			}
+
+			return this.super('handleRemove', [section_id, ev]);
+		};
+
+		o = s.option(form.ListValue, 'g_type', _('Group Type'), _('The type of the group.'));
+		o.value('1', _('Domain Group'));
+		o.value('2', _('MAC Group'));
+		o.defaulValue = '1';
+
+		o = s.option(form.DynamicList, 'domain_name', _('Domain Name'), _('The domain name of the group.'));
+		o.depends('g_type', '1');
+		o.datatype = 'hostname';
+		o.rmempty = false;
+		o.optional = false;
+		o.placeholder = 'www.example.com';
+		o.modalonly = true;
+
+		o = s.option(form.DynamicList, 'mac_address', _('MAC Address'), _('The MAC address of the group.'));
+		o.depends('g_type', '2');
+		o.datatype = 'macaddr';
+		o.rmempty = false;
+		o.optional = false;
+		o.placeholder = 'A0:B1:C2:D3:44:55';
+		o.modalonly = true;
+
+		o = s.option(form.Value, 'g_desc', _('Group Description'), _('The description of the group.'));
+		o.datatype = 'string';
+		o.optional = true;
+
+
 		return m.render();
 	}
 });

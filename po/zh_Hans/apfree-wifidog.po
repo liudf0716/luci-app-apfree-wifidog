@@ -76,3 +76,51 @@ msgstr "认证服务器可达"
 
 msgid "Authentication servers"
 msgstr "认证服务器"
+
+msgid "App White List"
+msgstr "应用白名单"
+
+msgid "The app white list of the gateway."
+msgstr "网关的应用白名单, 由下面的组资源对象定义"
+
+msgid "MAC White List"
+msgstr "MAC 地址组白名单"
+
+msgid "The MAC white list of the gateway."
+msgstr "网关的 MAC 地址组白名单, 由下面的组资源对象定义"
+
+msgid "Group Define"
+msgstr "组资源定义"
+
+msgid "Group Type"
+msgstr "组类型"
+
+msgid "The type of the group."
+msgstr "组的类型"
+
+msgid "Group Description"
+msgstr "组资源描述"
+
+msgid "Domain Group"
+msgstr "域名组"
+
+msgid "MAC Group"
+msgstr "MAC 地址组"
+
+msgid "The MAC address of the group."
+msgstr "组的 MAC 地址"
+
+msgid "Group Description"
+msgstr "组资源描述"
+
+msgid "The description of the group."
+msgstr "组的描述"
+
+msgid "Domain Name"
+msgstr "域名"
+
+msgid "The domain name of the group."
+msgstr "组的域名"
+
+msgid "The log level of the apfree-wifidog."
+msgstr "apfree-wifidog 的日志级别"
