@@ -6,17 +6,20 @@
 
 <div align="center">
 <a href="https://www.bilibili.com/video/BV18m411d7Yj/?vd_source=b303f6e8e0ed18809d8752d41ab1de7d">
-	<img width="800" alt="luci-app-apfree-wifidog_intro_video" src="https://github.com/liudf0716/luci-app-apfree-wifidog/assets/1182593/ce883a3e-bc11-432d-a91c-8f759ffc65b9">
+	<img width="800" alt="luci-app-apfree-wifidog_intro_video" src="https://github.com/liudf0716/luci-app-apfree-wifidog/assets/1182593/205fb67f-bc91-4124-b7a3-3fb4fcb0d1fe">
 </a>
 </div>
 
 ### 界面效果
 
-![image](https://github.com/liudf0716/luci-app-apfree-wifidog/assets/1182593/447c1642-9166-4189-af9c-e2c78340c551)
+![image](https://github.com/liudf0716/luci-app-apfree-wifidog/assets/1182593/205fb67f-bc91-4124-b7a3-3fb4fcb0d1fe)
 
-![image](https://github.com/liudf0716/luci-app-apfree-wifidog/assets/1182593/4268dd2b-d53e-4062-bb25-9267b7794ecc)
+![37051f9bef63f917c4a0d3fae33ab6e9](https://github.com/liudf0716/luci-app-apfree-wifidog/assets/1182593/91eb38bd-1f68-405f-90f5-d78752aef418)
 
-![image](https://github.com/liudf0716/luci-app-apfree-wifidog/assets/1182593/0b37e335-e620-4faa-b20b-66fc16baff47)
+![4d43abae8c2973838a1d25614e820b75](https://github.com/liudf0716/luci-app-apfree-wifidog/assets/1182593/0cb0449f-cc11-4320-948a-d123f7f00551)
+
+![image](https://github.com/liudf0716/luci-app-apfree-wifidog/assets/1182593/cfc9a058-b44a-4431-8f65-2d0bb220abea)
+
 
 ## 如何集成到openwrt中编译
 

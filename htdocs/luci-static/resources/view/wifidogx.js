@@ -52,9 +52,10 @@ return view.extend({
 		s.anonymous = true;
 		s.tab('basic', _('Basic Settings'));
 		s.tab('advanced', _('Advanced Settings'));
-		s.tab('group', _('Group Settings')); 
+		s.tab('rule', _('Rule Settings')); 
 		s.tab('status', _('Status'));
 
+		// basic settings
 		o = s.taboption('basic', form.Flag, 'enabled', _('Enable'), _('Enable apfree-wifidog service.'));
 		o.rmempty = false;
 
@@ -99,27 +100,62 @@ return view.extend({
 		o.defaulValue = 0;
 		o.optional = false;
 
-		o = s.taboption('advanced', form.DynamicList, 'trusted_domains', _('Trusted Domains'),
+		// advanced settings
+		o = s.taboption('advanced', form.Flag, 'enable_websocket', _('Enable WebSocket'),
+						_('Enable websocket support.'));
+		o.rmempty = false;
+		o.defaulValue = true;
+
+		o = s.taboption('advanced', form.Value, 'check_interval', _('Check Interval'),
+						_('The interval of the check(s).'));
+		o.datatype = 'uinteger';
+		o.rmempty = false;
+		o.optional = false;
+		o.defaulValue = 60;
+
+		o = s.taboption('advanced', form.Value, 'client_timeout', _('Client Timeout'),
+						_('The timeout of the client.'));
+		o.datatype = 'uinteger';
+		o.rmempty = false;
+		o.optional = false;
+		o.defaulValue = 5;
+
+		o = s.taboption('advanced', form.Flag, 'wired_passed', _('Wired Passed'),
+						_('Wired users do not need to authenticate to access the internet.'));
+		o.rmempty = false;
+
+		o = s.taboption('advanced', form.Flag, 'apple_cna', _('Apple CNA'),
+						_('Enable Apple Captive Network Assistant.'));
+		o.rmempty = false;
+		o.defaulValue = false;
+
+		o = s.taboption('advanced', form.Flag, 'js_filter', _('JS Filter'),
+						_('Enable JS redirect.'));
+		o.rmempty = false;
+		o.defaulValue = true;
+
+		// rule settings
+		o = s.taboption('rule', form.DynamicList, 'trusted_domains', _('Trusted Domains'),
 						_('The trusted domains of the gateway'));
 		o.rmempty = true;
 		o.optional = true;
 		o.datatype = 'hostname';
 		o.placeholder = 'www.example.com';
 
-		o = s.taboption('advanced', form.DynamicList, 'trusted_macs', _('Trusted MACs'),
+		o = s.taboption('rule', form.DynamicList, 'trusted_macs', _('Trusted MACs'),
 						_('The trusted MAC addresses of the gateway'));
 		o.rmempty = true;
 		o.optional = true;
 		o.datatype = 'macaddr';
 		o.placeholder = 'A0:B1:C2:D3:44:55';
 		
-		o = s.taboption('advanced', widgets.WifidogxGroupSelect, 'app_white_list', _('App White List'),
+		o = s.taboption('rule', widgets.WifidogxGroupSelect, 'app_white_list', _('App White List'),
 						_('The app white list of the gateway.'));
 		o.rmempty = true;
 		o.multiple = true;
 		o.nocreate = true;
 		
-		o = s.taboption('advanced', widgets.WifidogxGroupSelect, 'mac_white_list', _('MAC White List'),
+		o = s.taboption('rule', widgets.WifidogxGroupSelect, 'mac_white_list', _('MAC White List'),
 						_('The MAC white list of the gateway.'));
 		o.rmempty = true;
 		o.multiple = true;

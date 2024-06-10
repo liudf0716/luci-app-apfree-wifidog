@@ -124,3 +124,42 @@ msgstr "组的域名"
 
 msgid "The log level of the apfree-wifidog."
 msgstr "apfree-wifidog 的日志级别"
+
+msgid "Rule Settings"
+msgstr "规则设置"
+
+msgid "Check Interval"
+msgstr "检查间隔"
+
+msgid "The interval of the check(s)."
+msgstr "检查的间隔，单位为秒"
+
+msgid "Check Timeout"
+msgstr "检查超时"
+
+msgid "The timeout of the client."
+msgstr "客户端的超时次数，超过未响应将被被下线"
+
+msgid "Wired Passed"
+msgstr "有线免认证"
+
+msgid "Wired users do not need to authenticate to access the internet."
+msgstr "有线用户无需认证即可访问互联网"
+
+msgid "Apple CNA"
+msgstr "苹果 CNA"
+
+msgid "Enable Apple Captive Network Assistant."
+msgstr "启用苹果CNA机制（不建议启用）"
+
+msgid "JS Filter"
+msgstr "JS 过滤"
+
+msgid "Enable JS redirect."
+msgstr "通过启用 JS 重定向的机制降低服务器段的压力"
+
+msgid "Enable Websocket"
+msgstr "启用 Websocket"
+
+msgid "Enable websocket support."
+msgstr "启用 Websocket 支持, 用于实现认证服务器端放行功能"
