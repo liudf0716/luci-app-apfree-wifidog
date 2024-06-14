@@ -158,8 +158,17 @@ msgstr "JS 过滤"
 msgid "Enable JS redirect."
 msgstr "通过启用 JS 重定向的机制降低服务器段的压力"
 
-msgid "Enable Websocket"
+msgid "Enable WebSocket"
 msgstr "启用 Websocket"
 
 msgid "Enable websocket support."
 msgstr "启用 Websocket 支持, 用于实现认证服务器端放行功能"
+
+msgid "Client Timeout"
+msgstr "客户端超时"
+
+msgid "Enable Wildcard Domain"
+msgstr "启用通配符域名"
+
+msgid "Enable wildcard domain support."
+msgstr "支持通配符域名白名单，例如：.baidu.com，前面要加点"
