@@ -140,6 +140,13 @@ return view.extend({
 		o.defaulValue = true;
 
 		// rule settings
+		o = s.taboption('rule', form.DynamicList, 'trusted_wildcard_domains', _('Trusted Wildcard Domains'),
+						_('The trusted wildcard domains of the gateway'));
+		o.rmempty = true;
+		o.optional = true;
+		o.datatype = 'wildcard';
+		o.placeholder = '.example.com';
+		
 		o = s.taboption('rule', form.DynamicList, 'trusted_domains', _('Trusted Domains'),
 						_('The trusted domains of the gateway'));
 		o.rmempty = true;
@@ -148,7 +155,7 @@ return view.extend({
 		o.placeholder = 'www.example.com';
 
 		o = s.taboption('rule', form.DynamicList, 'trusted_macs', _('Trusted MACs'),
-						_('The trusted MAC addresses of the gateway'));
+						_('The trusted wildcard domains of the gateway.'));
 		o.rmempty = true;
 		o.optional = true;
 		o.datatype = 'macaddr';
@@ -166,6 +173,13 @@ return view.extend({
 		o.multiple = true;
 		o.nocreate = true;
 		o.setGroupType('mac');
+
+		o = s.taboption('rule', widgets.WifidogxGroupSelect, 'wildcard_white_list', _('Wildcard White List'),
+						_('The wildcard domain white list of the gateway.'));
+		o.rmempty = true;
+		o.multiple = true;
+		o.nocreate = true;
+		o.setGroupType('wildcard');
 
 		o = s.taboption('status', form.DummyValue, '_status');
 		o.rawhtml = true;
@@ -266,6 +280,7 @@ return view.extend({
 		o = s.option(form.ListValue, 'g_type', _('Group Type'), _('The type of the group.'));
 		o.value('1', _('Domain Group'));
 		o.value('2', _('MAC Group'));
+		o.value('3', _('Wildcard Domain Group'));
 		o.defaulValue = '1';
 
 		o = s.option(form.DynamicList, 'domain_name', _('Domain Name'), _('The domain name of the group.'));
@@ -282,6 +297,14 @@ return view.extend({
 		o.rmempty = false;
 		o.optional = false;
 		o.placeholder = 'A0:B1:C2:D3:44:55';
+		o.modalonly = true;
+
+		o = s.option(form.DynamicList, 'wildcard_domain', _('Wildcard Domain'), _('The wildcard domain of the group.'));
+		o.depends('g_type', '3');
+		o.datatype = 'wildcard';
+		o.rmempty = false;
+		o.optional = false;
+		o.placeholder = '.example.com';
 		o.modalonly = true;
 
 		o = s.option(form.Value, 'g_desc', _('Group Description'), _('The description of the group.'));
