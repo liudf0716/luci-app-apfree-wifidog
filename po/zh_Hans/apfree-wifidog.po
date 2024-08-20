@@ -193,3 +193,31 @@ msgstr "通配符域名"
 
 msgid "The wildcard domain of the group."
 msgstr "组的通配符域名"
+
+msgid "Basic Settings"
+msgstr "基本设置"
+
+msgid "Device ID"
+msgstr "设备 ID"
+
+msgid "The ID of the device."
+msgstr "设备的 ID，每个设备都必须有一个唯一的 ID"
+
+msgid "Gateway Channel"
+msgstr "网关渠道"
+
+msgid "The channel of the gateway."
+msgstr "网关的渠道"
+
+msgid "Gateway Name"
+msgstr "网关名称"
+
+msgid "The name of the gateway."
+msgstr "开启认证的网关所属网络区域"
+
+
+msgid "Gateway Settings"
+msgstr "网关设置"
+
+msgid "Log Level"
+msgstr "日志级别"

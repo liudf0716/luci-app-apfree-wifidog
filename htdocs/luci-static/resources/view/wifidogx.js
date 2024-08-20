@@ -41,7 +41,7 @@ function renderStatus(isRunning) {
 
 return view.extend({
 	render: function() {
-		var m, s, o;
+		var m, s, o, ss;
 
 		m = new form.Map('wifidogx', _('ApFree-WiFiDog'));
 		m.description = github.desc('apfree-wifidog offers a stable and secure captive portal solution.', 'liudf0716', 'apfree-wifidog');
@@ -50,7 +50,9 @@ return view.extend({
 		s = m.section(form.NamedSection, 'common',  _('Configuration'));
 		s.addremove = false;
 		s.anonymous = true;
+		
 		s.tab('basic', _('Basic Settings'));
+		s.tab('gateway', _('Gateway Settings'));
 		s.tab('advanced', _('Advanced Settings'));
 		s.tab('rule', _('Rule Settings')); 
 		s.tab('status', _('Status'));
@@ -59,14 +61,9 @@ return view.extend({
 		o = s.taboption('basic', form.Flag, 'enabled', _('Enable'), _('Enable apfree-wifidog service.'));
 		o.rmempty = false;
 
-		o = s.taboption('basic', form.Value, 'gateway_id', _('Gateway ID'), _('The ID of the gateway.'));
+		o = s.taboption('basic', form.Value, 'device_id', _('Device ID'), _('The ID of the device.'));
 		o.rmempty = false;
 		o.datatype = 'string';
-		o.optional = false;
-
-		o = s.taboption('basic', form.Value, 'channel_path', _('Channel Path'), _('The channel path of the gateway.'));
-		o.datatype = 'string';
-		o.rmempty = false;
 		o.optional = false;
 
 		o = s.taboption('basic', form.Value, 'auth_server_hostname', _('Auth Server Hostname'), 
@@ -100,6 +97,34 @@ return view.extend({
 		o.defaulValue = 0;
 		o.optional = false;
 
+		// gateway settings
+		o = s.taboption('gateway', form.SectionValue, '_gateway', form.GridSection, 'gateway');
+		ss = o.subsection;
+		ss.addremove = true;
+		ss.nodescriptions = true;
+		
+		o = ss.option(widgets.DeviceSelect, 'gateway_name', _('Gateway Name'));
+		o.filter = function(section_id, name) {
+			var dev = this.devices.filter(function(dev) { return dev.getName() == name })[0];
+			return (dev && dev.getType() == 'bridge');
+		};
+		o.rmempty = false;
+		o.nocreate = true;
+		o.allowany = true;
+		o.default = 'lan';
+
+		o = ss.option(form.Value, 'gateway_channel', _('Gateway Channel'),
+						_('The channel of the gateway.'));
+		o.datatype = 'string';
+		o.rmempty = false;
+		o.optional = false;
+
+		o = ss.option(form.Value, 'gateway_id', _('Gateway ID'),
+						_('The ID of the gateway.'));
+		o.datatype = 'string';
+		o.rmempty = false;
+		o.optional = true;
+		
 		// advanced settings
 		o = s.taboption('advanced', form.Flag, 'enable_websocket', _('Enable WebSocket'),
 						_('Enable websocket support.'));

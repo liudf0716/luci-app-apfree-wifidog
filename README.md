@@ -14,9 +14,10 @@
 
 ![image](https://github.com/liudf0716/luci-app-apfree-wifidog/assets/1182593/205fb67f-bc91-4124-b7a3-3fb4fcb0d1fe)
 
-![37051f9bef63f917c4a0d3fae33ab6e9](https://github.com/liudf0716/luci-app-apfree-wifidog/assets/1182593/91eb38bd-1f68-405f-90f5-d78752aef418)
+![image](https://github.com/liudf0716/luci-app-apfree-wifidog/assets/1182593/c78dd027-b7ef-4319-9d57-e7a330872cb2)
 
-![4d43abae8c2973838a1d25614e820b75](https://github.com/liudf0716/luci-app-apfree-wifidog/assets/1182593/0cb0449f-cc11-4320-948a-d123f7f00551)
+![6e3ddc318f8de883a09d09e999351f66](https://github.com/liudf0716/luci-app-apfree-wifidog/assets/1182593/4feb2a93-24fa-4844-aee0-613c7bd21891)
+
 
 ![image](https://github.com/liudf0716/luci-app-apfree-wifidog/assets/1182593/cfc9a058-b44a-4431-8f65-2d0bb220abea)
 
