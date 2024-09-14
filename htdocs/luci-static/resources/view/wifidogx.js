@@ -61,28 +61,58 @@ return view.extend({
 		o = s.taboption('basic', form.Flag, 'enabled', _('Enable'), _('Enable apfree-wifidog service.'));
 		o.rmempty = false;
 
+		o = s.taboption('basic', form.Flag, 'no_auth_server', _('No Auth Server'), _('Do not use authentication server.'));
+		o.rmempty = false;
+
 		o = s.taboption('basic', form.Value, 'device_id', _('Device ID'), _('The ID of the device.'));
+		o.depends('no_auth_server', '0');
 		o.rmempty = false;
 		o.datatype = 'string';
 		o.optional = false;
 
 		o = s.taboption('basic', form.Value, 'auth_server_hostname', _('Auth Server Hostname'), 
 						_('The domain or IP address of the authentication server.'));
+		o.depends('no_auth_server', '0');
 		o.rmempty = false;
 		o.datatype = 'or(host,ip4addr)';
 		o.optional = false;
 
 		o = s.taboption('basic', form.Value, 'auth_server_port', _('Auth Server Port'),
 						_('The port of the authentication server.'));
+		o.depends('no_auth_server', '0');
 		o.rmempty = false;
 		o.datatype = 'port';
 		o.optional = false;
 
 		o = s.taboption('basic', form.Value, 'auth_server_path', _('Auth Server URI path'),
 						_('The URI path of the authentication server.'));
+		o.depends('no_auth_server', '0');
 		o.rmempty = false;
 		o.datatype = 'string';
 		o.optional = false;
+
+		o = s.taboption('basic', form.FileUpload, 'auth_server_offline_page', _('Upload offline Page'),
+						_('The offline page of the authentication server.'));
+		o.depends('no_auth_server', '1');
+		o.rmempty = false;
+		o.optional = true
+		o.datatype = 'file';
+		o.root_directory = '/etc/wifidogx';
+
+		o = s.taboption('basic', form.Value, 'auth_server_offline_file', _('Offline Page Full Path'),
+						_('The full path of the uploaded offline page.'));
+		o.depends('no_auth_server', '1');
+		o.rmempty = false;
+		o.datatype = 'string';
+		o.optional = true;
+		o.placeholder = '/etc/wifidogx/';
+
+		o = s.taboption('basic', form.Value, 'local_portal', _('Local Portal'),
+						_('The local portal url.'));
+		o.depends('no_auth_server', '1');
+		o.rmempty = false;
+		o.datatype = 'string';
+		o.optional = true;
 
 		o = s.taboption('basic', form.ListValue, 'log_level', _('Log Level'),
 						_('The log level of the apfree-wifidog.'));
@@ -124,6 +154,7 @@ return view.extend({
 		o.datatype = 'string';
 		o.rmempty = false;
 		o.optional = true;
+		
 		
 		// advanced settings
 		o = s.taboption('advanced', form.Flag, 'enable_websocket', _('Enable WebSocket'),

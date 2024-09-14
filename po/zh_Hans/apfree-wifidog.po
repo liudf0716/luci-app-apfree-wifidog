@@ -221,3 +221,27 @@ msgstr "网关设置"
 
 msgid "Log Level"
 msgstr "日志级别"
+
+msgid "No Auth Server"
+msgstr "无认证服务器"
+
+msgid "Do not use authentication server."
+msgstr "不使用认证服务器"
+
+msgid "The offline page of the authentication server."
+msgstr "认证服务器离线用户展示页面"
+
+msgid "Upload offline Page"
+msgstr "上传离线页面"
+
+msgid "Offline Page Full Path"
+msgstr "离线页面完整路径"
+
+msgid "The full path of the uploaded offline page."
+msgstr "上传的离线页面的完整路径"
+
+msgid "Local Portal"
+msgstr "本地门户"
+
+msgid "The local portal url."
+msgstr "本地门户跳转URL"

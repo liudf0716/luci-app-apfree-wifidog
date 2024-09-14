@@ -11,7 +11,10 @@
 			"uci": ["wifidogx"]
 		},
 		"write": {
-			"uci": ["wifidogx"]
+			"uci": ["wifidogx"],
+			"file": {
+				"/etc/wifidogx/*": [ "write" ]
+			}
 		}
 	}
 }
