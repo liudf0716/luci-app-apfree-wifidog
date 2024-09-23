@@ -245,3 +245,21 @@ msgstr "本地门户"
 
 msgid "The local portal url."
 msgstr "本地门户跳转URL"
+
+msgid "WebSocket Hostname"
+msgstr "Websocket 主机名"
+
+msgid "The hostname of the websocket, if the field is left empty, automatically use the same hostname as the auth server."
+msgstr "Websocket 的主机名，如果留空则自动使用与认证服务器相同的主机名"
+
+msgid "WebSocket Port"
+msgstr "Websocket 端口"
+
+msgid "The port of the websocket, if the field is left empty, automatically use the same port as the auth server."
+msgstr "Websocket 的端口，如果留空则自动使用与认证服务器相同的端口"
+
+msgid "WebSocket URI path"
+msgstr "Websocket URI 路径"
+
+msgid "The URI path of the websocket."
+msgstr "Websocket 的 URI 路径"

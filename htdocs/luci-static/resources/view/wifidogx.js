@@ -162,6 +162,27 @@ return view.extend({
 		o.rmempty = false;
 		o.defaulValue = true;
 
+		o = s.taboption('advanced', form.Value, 'ws_server_hostname', _('WebSocket Hostname'),
+						_('The hostname of the websocket, if the field is left empty, automatically use the same hostname as the auth server.'));
+		o.datatype = 'or(host,ip4addr)';
+		o.rmempty = true;
+		o.optional = true;
+		o.depends('enable_websocket', '1'); 
+
+		o = s.taboption('advanced', form.Value, 'ws_server_port', _('WebSocket Port'),
+						_('The port of the websocket, if the field is left empty, automatically use the same port as the auth server.'));
+		o.datatype = 'port';
+		o.rmempty = true;
+		o.depends('enable_websocket', '1');
+		o.optional = true;
+		
+		o = s.taboption('advanced', form.Value, 'ws_server_path', _('WebSocket URI path'),
+						_('The URI path of the websocket.'));
+		o.datatype = 'string';
+		o.rmempty = true;
+		o.depends('enable_websocket', '1');
+		o.optional = true;
+
 		o = s.taboption('advanced', form.Flag, 'enable_dns_forward', _('Enable Wildcard Domain'),
 						_('Enable wildcard domain support.'));
 		o.rmempty = false;
