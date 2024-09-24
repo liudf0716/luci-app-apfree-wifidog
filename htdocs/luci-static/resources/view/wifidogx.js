@@ -61,58 +61,62 @@ return view.extend({
 		o = s.taboption('basic', form.Flag, 'enabled', _('Enable'), _('Enable apfree-wifidog service.'));
 		o.rmempty = false;
 
-		o = s.taboption('basic', form.Flag, 'no_auth_server', _('No Auth Server'), _('Do not use authentication server.'));
-		o.rmempty = false;
+		o = s.taboption('basic', form.ListValue, 'auth_server_mode', _('Auth Server Mode'),
+						_('The mode of the authentication server.'));
+		o.value('cloud', _('Cloud Auth'));
+		o.value('local', _('Local Auth'));
+		o.defaulValue = 'cloud';
+		o.optional = false;
 
 		o = s.taboption('basic', form.Value, 'device_id', _('Device ID'), _('The ID of the device.'));
-		o.depends('no_auth_server', '0');
 		o.rmempty = false;
 		o.datatype = 'string';
 		o.optional = false;
+		o.depends('auth_server_mode', 'cloud');
 
 		o = s.taboption('basic', form.Value, 'auth_server_hostname', _('Auth Server Hostname'), 
 						_('The domain or IP address of the authentication server.'));
-		o.depends('no_auth_server', '0');
 		o.rmempty = false;
 		o.datatype = 'or(host,ip4addr)';
 		o.optional = false;
+		o.depends('auth_server_mode', 'cloud');
 
 		o = s.taboption('basic', form.Value, 'auth_server_port', _('Auth Server Port'),
 						_('The port of the authentication server.'));
-		o.depends('no_auth_server', '0');
 		o.rmempty = false;
 		o.datatype = 'port';
 		o.optional = false;
+		o.depends('auth_server_mode', 'cloud');
 
 		o = s.taboption('basic', form.Value, 'auth_server_path', _('Auth Server URI path'),
 						_('The URI path of the authentication server.'));
-		o.depends('no_auth_server', '0');
 		o.rmempty = false;
 		o.datatype = 'string';
 		o.optional = false;
+		o.depends('auth_server_mode', 'cloud');
 
 		o = s.taboption('basic', form.FileUpload, 'auth_server_offline_page', _('Upload offline Page'),
 						_('The offline page of the authentication server.'));
-		o.depends('no_auth_server', '1');
 		o.rmempty = false;
 		o.optional = true
 		o.datatype = 'file';
 		o.root_directory = '/etc/wifidogx';
+		o.depends('auth_server_mode', 'local');
 
 		o = s.taboption('basic', form.Value, 'auth_server_offline_file', _('Offline Page Full Path'),
 						_('The full path of the uploaded offline page.'));
-		o.depends('no_auth_server', '1');
 		o.rmempty = false;
 		o.datatype = 'string';
 		o.optional = true;
 		o.placeholder = '/etc/wifidogx/';
+		o.depends('auth_server_mode', 'local');
 
 		o = s.taboption('basic', form.Value, 'local_portal', _('Local Portal'),
 						_('The local portal url.'));
-		o.depends('no_auth_server', '1');
 		o.rmempty = false;
 		o.datatype = 'string';
 		o.optional = true;
+		o.depends('auth_server_mode', 'local');
 
 		o = s.taboption('basic', form.ListValue, 'log_level', _('Log Level'),
 						_('The log level of the apfree-wifidog.'));
@@ -157,31 +161,68 @@ return view.extend({
 		
 		
 		// advanced settings
-		o = s.taboption('advanced', form.Flag, 'enable_websocket', _('Enable WebSocket'),
-						_('Enable websocket support.'));
+		o = s.taboption('advanced', form.ListValue, 'long_conn_mode', _('Persistent Connection Mode'),
+						_('The persistent connection mode of the device to auth server.'));
+		o.value('ws', _('WebSocket Connection Mode'));
+		o.value('wss', _('WebSocket Secure Connection Mode'));
+		o.value('mqtt', _('MQTT Connection Mode'));
+		o.value('none', _('None'));
 		o.rmempty = false;
-		o.defaulValue = true;
+		o.defaulValue = 'ws';
+		o.optional = false;
 
 		o = s.taboption('advanced', form.Value, 'ws_server_hostname', _('WebSocket Hostname'),
 						_('The hostname of the websocket, if the field is left empty, automatically use the same hostname as the auth server.'));
 		o.datatype = 'or(host,ip4addr)';
 		o.rmempty = true;
 		o.optional = true;
-		o.depends('enable_websocket', '1'); 
+		o.depends('long_conn_mode', 'ws');
+		o.depends('long_conn_mode', 'wss');
 
 		o = s.taboption('advanced', form.Value, 'ws_server_port', _('WebSocket Port'),
 						_('The port of the websocket, if the field is left empty, automatically use the same port as the auth server.'));
 		o.datatype = 'port';
 		o.rmempty = true;
-		o.depends('enable_websocket', '1');
 		o.optional = true;
+		o.depends('long_conn_mode', 'ws');
+		o.depends('long_conn_mode', 'wss');
 		
 		o = s.taboption('advanced', form.Value, 'ws_server_path', _('WebSocket URI path'),
 						_('The URI path of the websocket.'));
 		o.datatype = 'string';
 		o.rmempty = true;
-		o.depends('enable_websocket', '1');
 		o.optional = true;
+		o.depends('long_conn_mode', 'ws');
+		o.depends('long_conn_mode', 'wss');
+
+		o = s.taboption('advanced', form.Value, 'mqtt_server_hostname', _('MQTT Hostname'),
+						_('The hostname of the mqtt.'));
+		o.datatype = 'or(host,ip4addr)';
+		o.rmempty = true;
+		o.optional = true;
+		o.depends('long_conn_mode', 'mqtt');
+
+		o = s.taboption('advanced', form.Value, 'mqtt_server_port', _('MQTT Port'),
+						_('The port of the mqtt.'));
+		o.datatype = 'port';
+		o.rmempty = false;
+		o.optional = false;
+		o.depends('long_conn_mode', 'mqtt');
+		o.defaulValue = 1883;
+
+		o = s.taboption('advanced', form.Value, 'mqtt_username', _('MQTT Username'),
+						_('The username of the mqtt.'));
+		o.datatype = 'string';
+		o.rmempty = true;
+		o.optional = true;
+		o.depends('long_conn_mode', 'mqtt');
+
+		o = s.taboption('advanced', form.Value, 'mqtt_password', _('MQTT Password'),
+						_('The password of the mqtt.'));
+		o.datatype = 'string';
+		o.rmempty = true;
+		o.optional = true;
+		o.depends('long_conn_mode', 'mqtt');
 
 		o = s.taboption('advanced', form.Flag, 'enable_dns_forward', _('Enable Wildcard Domain'),
 						_('Enable wildcard domain support.'));

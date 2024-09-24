@@ -263,3 +263,56 @@ msgstr "Websocket URI 路径"
 
 msgid "The URI path of the websocket."
 msgstr "Websocket 的 URI 路径"
+
+msgid "Auth Server Mode"
+msgstr "认证服务器模式"
+
+msgid "The mode of the authentication server."
+msgstr "认证服务器是云认证还是本地认证"
+
+msgid "Cloud Auth"
+msgstr "云认证"
+
+msgid "Local Auth"
+msgstr "本地认证"
+
+msgid "Persistent Connection Mode"
+msgstr "持久连接模式"
+
+msgid "The persistent connection mode of the device to auth server."
+msgstr "设备到认证服务器的持久连接模式"
+
+msgid "WebSocket Connection Mode"
+msgstr "Websocket 连接模式"
+
+msgid "WebSocket Secure Connection Mode"
+msgstr "Websocket 安全连接模式"
+
+msgid "MQTT Connection Mode"
+msgstr "MQTT 连接模式"
+
+msgid "MQTT Hostname"
+msgstr "MQTT 主机名"
+
+msgid "The hostname of the mqtt."
+msgstr "mqtt 的主机名"
+
+msgid "MQTT Port"
+msgstr "MQTT 端口"
+
+msgid "The port of the mqtt."
+msgstr "mqtt 的端口"
+
+msgid "MQTT Username"
+msgstr "MQTT 用户名"
+
+msgid "The username of the mqtt."
+msgstr "mqtt 的用户名"
+
+msgid "MQTT Password"
+msgstr "MQTT 密码"
+
+msgid "The password of the mqtt."
+msgstr "mqtt 的密码"
+
+
