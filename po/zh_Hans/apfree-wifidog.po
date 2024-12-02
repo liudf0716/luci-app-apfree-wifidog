@@ -322,10 +322,10 @@ msgid "External Interface"
 msgstr "外部接口"
 
 msgid "Enable Anti NAT devices."
-msgstr "启用反 NAT 设备"
+msgstr "启用防止二级 NAT 设备"
 
 msgid "Enable Anti NAT"
-msgstr "启用反 NAT"
+msgstr "启用防 NAT"
 
 msgid "The TTL value of the gateway support."
 msgstr "网关支持放行的 TTL 值"
