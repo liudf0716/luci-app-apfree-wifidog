@@ -281,7 +281,7 @@ return view.extend({
 		o.defaulValue = '64,128';
 		o.depends('enable_anti_nat', '1');
 
-		o = s.taboption('advanced', form.Value, 'anti_nat_permit_mac', _('Anti NAT Permit MAC'),
+		o = s.taboption('advanced', form.Value, 'anti_nat_permit_macs', _('Anti NAT Permit MAC'),
 						_('The MAC address of the Anti NAT permit.'));
 		o.datatype = 'macaddr';
 		o.rmempty = true;
