@@ -11,7 +11,7 @@
 		}
 	},
 	"admin/status/wifidogx": {
-		"title": "Bandwidth Monitor",
+		"title": "apfree-wifidog",
 		"order": 2,
 		"action": {
 			"type": "alias",

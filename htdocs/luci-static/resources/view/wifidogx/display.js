@@ -423,7 +423,7 @@ return view.extend({
 				'src': L.resource('nlbw.chart.min.js')
 			}),
 
-			E('h2', [ _('Network Speed Monitor') ]),
+			E('h2', [ _('Auth User Speed Monitor') ]),
 
 			E('div', [
 				E('div', { 'class': 'cbi-section', 'data-tab': 'speed', 'data-tab-title': _('Speed Distribution') }, [
