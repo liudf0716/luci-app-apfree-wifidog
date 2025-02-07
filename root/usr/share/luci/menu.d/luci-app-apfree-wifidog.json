@@ -11,7 +11,7 @@
 		}
 	},
 	"admin/status/wifidogx": {
-		"title": "apfree-wifidog",
+		"title": "Auth User",
 		"order": 2,
 		"action": {
 			"type": "alias",

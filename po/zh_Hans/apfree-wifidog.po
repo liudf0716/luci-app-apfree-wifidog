@@ -416,3 +416,30 @@ msgstr "初始流量"
 
 msgid "apfree-wifidog Status"
 msgstr "apfree-wifidog 状态"
+
+msgid "Upload (Bytes)"
+msgstr "上传（字节）"
+
+msgid "Upload (Packets)"
+msgstr "上传（数据包）"
+
+msgid "Download (Bytes)"
+msgstr "下载（字节）"
+
+msgid "Download (Packets)"
+msgstr "下载（数据包）"
+
+msgid "download speed"
+msgstr "下载速度"
+
+msgid "upload speed"
+msgstr "上传速度"
+
+msgid "Display"
+msgstr "主机流速显示"
+
+msgid "Auth User"
+msgstr "认证用户"
+
+msgid "No data recorded yet."
+msgstr "暂无数据"
